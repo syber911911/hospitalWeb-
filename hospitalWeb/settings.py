@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'backend',
     'corsheaders',
-    'rest_framework'
+    'rest_framework',
+    'webpack_loader',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -71,7 +72,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'Frontend', 'build')
+            os.path.join(BASE_DIR, 'backend/templates/backend'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -139,13 +140,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'hospital-location/build/static'),
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'Frontend', 'build', 'static')
-]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')

@@ -4,10 +4,12 @@ from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
 from . import views
 from backend import views
-
+from django.views.generic import TemplateView
 
 urlpatterns = [
-    path('', views.HomeTemplateView.as_view(), name='home'),
+    path('', views.ReactAppView.as_view(), name='hospital'),
+    path('hospital/', views.ReactAppView.as_view(), name='hospital'),
+    path('emergency/', views.ReactAppView.as_view(), name='emergency'),
     path('test/',views.locationList.as_view()),
     path('test/<str:pk>', views.hospitalDetail.as_view()),
     path('test/<str:lon>/<str:lat>', views.searchEmergency.as_view()),

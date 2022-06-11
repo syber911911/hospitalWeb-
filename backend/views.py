@@ -8,14 +8,27 @@ from django.views.generic import TemplateView
 from .serializers import normalHSerializer,emerHSerializer
 from .models import normalH
 from .emerH import check_ID, update_hospitalization, search_Emergency
-from django.views.generic import TemplateView
+from django.views.generic import View
+import os
+from django.http import HttpResponse
+
+from django.conf import settings
 
 #추가할 기능
 #업데이트주기
 #응급실운영하는 곳의 기관명과 좌표를 넘겨줌
-
-class HomeTemplateView(TemplateView):
-    template_name = 'index.html'
+class ReactAppView(View):
+    def get(self, request):
+        try:
+            with open(os.path.join(str(settings.BASE_DIR),'backend', 'templates', 'backend', 'index.html')) as file:
+                return HttpResponse(file.read())
+        except:
+            return HttpResponse(
+                """
+            index.html not found ! build your React app !!
+            """,
+                status=501,
+            )
     
 class locationList(APIView):
     def get(self, request):
