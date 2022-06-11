@@ -140,10 +140,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'backend/static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'backend/static'),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 # Default primary key field type
