@@ -84,9 +84,9 @@ def search_Emergency(lon, lat):
 
     for i in range(len(names)):
         values = {}
-        values["거리"] = temp[0][2]
+        values["거리"] = temp[i][2]
         sql1 = "select * from normalH where 기관ID = %s;"
-        val1 = (temp[0][1])
+        val1 = (temp[i][1])
         curs1.execute(sql1, val1)
         value = curs1.fetchall()
         for j in range(len(attribute)):
@@ -103,5 +103,3 @@ def get_name(list):
     for i in range(length):
         names.append(list[i][0])
     return names
-
-# print(search_Emergency(37.5666805,126.9784147))
